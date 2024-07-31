@@ -21,8 +21,7 @@ from service.DatasetService import DatasetService
 from storage.FaceStorage import FaceStorage
 import datetime
 
-cascPathface = os.path.dirname(cv2.__file__) + \
-    "/data/haarcascade_frontalface_alt2.xml"
+cascPathface = "ui/data/haarcascade_frontalface_alt2.xml"
 # load the harcaascade in the cascade classifier
 faceCascade = cv2.CascadeClassifier(cascPathface)
 

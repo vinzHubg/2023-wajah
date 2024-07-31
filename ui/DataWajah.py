@@ -11,7 +11,7 @@ from core.Context import Context
 from helpers import text
 from storage.FaceStorage import FaceStorage
 
-cascPathface = os.path.dirname(cv2.__file__) + "/data/haarcascade_frontalface_alt2.xml"
+cascPathface = "ui/data/haarcascade_frontalface_alt2.xml"
 # load the harcaascade in the cascade classifier
 faceCascade = cv2.CascadeClassifier(cascPathface)
 

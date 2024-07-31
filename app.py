@@ -6,15 +6,14 @@ import cv2 as cv2
 import os
 
 # find path of xml file containing haarcascade file
-cascPathface = os.path.dirname(
-    cv2.__file__) + "/data/haarcascade_frontalface_alt2.xml"
+cascPathface = "ui/data/haarcascade_frontalface_alt2.xml"
 # load the harcaascade in the cascade classifier
 faceCascade = cv2.CascadeClassifier(cascPathface)
 # load the known faces and embeddings saved in last file
 data = pickle.loads(open('face_enc', "rb").read())
 
 print("Streaming started")
-video_capture = cv2.VideoCapture(2)
+video_capture = cv2.VideoCapture(0)
 video_capture.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 video_capture.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 # loop over frames from the video file stream
