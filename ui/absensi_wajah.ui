@@ -90,6 +90,32 @@ color: rgb(255, 255, 255);</string>
      </layout>
     </item>
     <item>
+     <widget class="QLabel" name="jam">
+      <property name="maximumSize">
+       <size>
+        <width>16777215</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>23</pointsize>
+        <weight>75</weight>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(179, 179, 179);</string>
+      </property>
+      <property name="text">
+       <string>Tidak diketahui</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item>
      <widget class="QLabel" name="image_label">
       <property name="styleSheet">
        <string notr="true">background-image: url(:/newPrefix/bg.jpg);</string>

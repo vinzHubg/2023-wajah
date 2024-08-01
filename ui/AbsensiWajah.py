@@ -7,6 +7,7 @@ from PyQt5.QtCore import pyqtSignal, pyqtSlot, Qt, QThread
 import numpy as np
 import os
 import face_recognition
+from PyQt5.QtCore import QTimer, QTime, Qt  
 
 from core.Context import Context
 from helpers import text
@@ -181,6 +182,12 @@ class AbsensiWajah(QtWidgets.QMainWindow):
 
         uic.loadUi("ui/absensi_wajah.ui", self)
 
+        timerClock = QTimer(self)  
+  
+        timerClock.timeout.connect(self.displayTime)  
+  
+        timerClock.start(1000)  
+
         self.disply_width = 640
         self.display_height = 480
         self.rgb_image = None
@@ -218,6 +225,16 @@ class AbsensiWajah(QtWidgets.QMainWindow):
 
     #     self.storage.put(self.id, self.rgb_image)
     #     QtWidgets.QMessageBox.information(self, "Simpan image", "Berhasil disimpan")
+    def displayTime(self):  
+  
+        # get the present time  
+        present_time = QTime.currentTime()  
+  
+        # convert the QTime object into a string  
+        time_label = present_time.toString('hh:mm:ss')  
+  
+        # display text to the label  
+        self.jam.setText(time_label) 
 
     def closeEvent(self, event):
         self.thread.stop()
