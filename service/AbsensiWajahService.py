@@ -76,6 +76,7 @@ class AbsensiWajahService:
             "{}:{}".format(jam_masuk.hour, jam_masuk.minute),
             "00:00",
             status,
+            jadwal
         )
         if status == "Terlambat":
             return self.ABSEN_MASUK_TERLAMBAT_BERHASIL

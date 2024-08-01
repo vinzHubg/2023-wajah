@@ -1,5 +1,5 @@
-
 from database.Connection import Connection
+from datetime import datetime
 
 
 class RepoJadwal:
@@ -15,7 +15,11 @@ class RepoJadwal:
         cursor.close()
         return results
 
-    def tambah(self, jam_masuk, jam_pulang):
+    def tambah(self, jam_masuk_str, jam_pulang_str):
+
+        jam_masuk = datetime.strptime(jam_masuk_str.replace(".", ":"), '%H:%M').time()
+        jam_pulang = datetime.strptime(jam_pulang_str.replace(".", ":"), '%H:%M').time()
+
         cursor = self.db.cursor()
         sql = "INSERT INTO data_jadwal (jam_masuk, jam_pulang) VALUES (%s, %s)"
         params = (jam_masuk, jam_pulang,)
@@ -31,9 +35,14 @@ class RepoJadwal:
         self.db.commit()
         cursor.close()
 
-    def ubah(self, id, jam_masuk, jam_pulang):
+    def ubah(self, id, jam_masuk_str, jam_pulang_str):
+
+        jam_masuk = datetime.strptime(jam_masuk_str.replace(".", ":"), '%H:%M').time()
+        jam_pulang = datetime.strptime(jam_pulang_str.replace(".", ":"), '%H:%M').time()
+
         cursor = self.db.cursor()
         sql = "UPDATE data_jadwal SET jam_masuk=%s, jam_pulang=%s WHERE id=%s" 
+
         params = (jam_masuk, jam_pulang, id,)
         cursor.execute(sql, params)
         self.db.commit()

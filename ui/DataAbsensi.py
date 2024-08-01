@@ -11,6 +11,7 @@ from ui.DataAbsensiTambah import DataAbsensiTambah
 from ui.DataAbsensiUbah import DataAbsensiUbah
 from ui.print.template import get_template
 from ui.print.cetak import cetak
+from ui.DateRangeDialog import DateRangeDialog
 
 
 class DataAbsensi(QtWidgets.QMainWindow):
@@ -44,11 +45,16 @@ class DataAbsensi(QtWidgets.QMainWindow):
         self.table.resizeColumnToContents(2)
 
     def cetakButtonClick(self):
-        html = get_template("data_absensi.html").render(
-            datas=self.datas,
-            tanggal_indo=datetime.now().strftime("%d %B %Y"),
-        )
-        cetak(html, "reports/laporan_absensi.pdf")
+        dialog = DateRangeDialog()
+        if dialog.exec_():
+            start_date, end_date = dialog.get_date_range()
+            datas = self.repo.range(start_date, end_date)
+            print(f"Start Date: {start_date}, End Date: {end_date}")
+            html = get_template("data_absensi.j2").render(
+                datas=datas,
+                tanggal_indo=datetime.now().strftime("%d %B %Y"),
+            )
+            cetak(html, "reports/laporan_absensi.pdf")
 
     def tambahButtonClick(self):
         self.tambah.show()

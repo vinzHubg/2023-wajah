@@ -23,10 +23,10 @@ class RepoAbsensiWajah:
         results = cursor.fetchone()
         return results
 
-    def absen(self, tanggal, id_karyawan, jam_masuk, jam_pulang, status):
+    def absen(self, tanggal, id_karyawan, jam_masuk, jam_pulang, status, jadwal_masuk):
         cursor = self.connection.cursor()
-        sql = "INSERT INTO data_absensi (tanggal, id_karyawan, absen_masuk, absen_pulang, status) VALUES (%s, %s, %s, %s, %s)"
-        params = (tanggal, id_karyawan, jam_masuk, jam_pulang, status)
+        sql = "INSERT INTO data_absensi (tanggal, id_karyawan, absen_masuk, absen_pulang, status, jadwal_masuk) VALUES (%s, %s, %s, %s, %s, %s)"
+        params = (tanggal, id_karyawan, jam_masuk, jam_pulang, status, jadwal_masuk)
         cursor.execute(sql, params)
         self.connection.commit()
         cursor.close()

@@ -5,10 +5,21 @@ from database.Connection import Connection
 class RepoAbsensi:
     def __init__(self, connection: Connection) -> None:
         self.connection = connection
+    
+    def range(self, start_date, end_date):
+        cursor = self.connection.cursor()
+        sql = """SELECT data_absensi.id, data_absensi.tanggal, CONCAT(data_karyawan.id, " - ", data_karyawan.nama_lengkap), data_absensi.absen_masuk, data_absensi.absen_pulang, data_absensi.status, data_absensi.jadwal_masuk
+        FROM data_absensi JOIN data_karyawan ON data_karyawan.id = data_absensi.id_karyawan
+        WHERE data_absensi.tanggal BETWEEN %s AND %s"""
+        params = (start_date, end_date)
+        cursor.execute(sql, params)
+        results = cursor.fetchall()
+        cursor.close()
+        return results
 
     def all(self, search):
         cursor = self.connection.cursor()
-        sql = """SELECT data_absensi.id, data_absensi.tanggal, CONCAT(data_karyawan.id, " - ", data_karyawan.nama_lengkap), data_absensi.absen_masuk, data_absensi.absen_pulang, data_absensi.status
+        sql = """SELECT data_absensi.id, data_absensi.tanggal, CONCAT(data_karyawan.id, " - ", data_karyawan.nama_lengkap), data_absensi.absen_masuk, data_absensi.absen_pulang, data_absensi.status, data_absensi.jadwal_masuk
         FROM data_absensi JOIN data_karyawan ON data_karyawan.id = data_absensi.id_karyawan
         WHERE data_karyawan.nama_lengkap
         LIKE %s

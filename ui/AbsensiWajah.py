@@ -21,6 +21,8 @@ from service.DatasetService import DatasetService
 from storage.FaceStorage import FaceStorage
 import datetime
 
+THERESHOLD = 0.60
+
 cascPathface = "ui/data/haarcascade_frontalface_alt2.xml"
 # load the harcaascade in the cascade classifier
 faceCascade = cv2.CascadeClassifier(cascPathface)
@@ -97,20 +99,30 @@ class VideoThread(QThread):
 
                         karyawan = self.datasets[name]["data"]
 
-                        if distance > 0.70:
+                        if distance > THRESHOLD:
+                            cv2.putText(
+                                frame,
+                                "{} {:.2f}".format(karyawan[1], distance * 100),
+                                (x, y),
+                                cv2.FONT_HERSHEY_SIMPLEX,
+                                0.75,
+                                (0, 255, 0),
+                                2,
+                            )
                             self.found_signal.emit(karyawan)
                         else:
+                            cv2.putText(
+                                frame,
+                                "Tidak diketahui",
+                                (x, y),
+                                cv2.FONT_HERSHEY_SIMPLEX,
+                                0.75,
+                                (0, 255, 0),
+                                2,
+                            )
                             self.found_signal.emit(())
 
-                        cv2.putText(
-                            frame,
-                            "{} {:.2f}".format(karyawan[1], distance * 100),
-                            (x, y),
-                            cv2.FONT_HERSHEY_SIMPLEX,
-                            0.75,
-                            (0, 255, 0),
-                            2,
-                        )
+                        
 
                         # for ((x, y, w, h), name) in zip(faces, names):
                         #     # cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)
