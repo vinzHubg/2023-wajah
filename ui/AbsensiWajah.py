@@ -21,7 +21,7 @@ from service.DatasetService import DatasetService
 from storage.FaceStorage import FaceStorage
 import datetime
 
-THERESHOLD = 0.60
+THRESHOLD = 0.60
 
 cascPathface = "ui/data/haarcascade_frontalface_alt2.xml"
 # load the harcaascade in the cascade classifier

@@ -3,6 +3,7 @@ import sys, os
 from core.Context import Context
 from database.Connection import Connection
 from ui.Login import Login
+import resources
 
 # pyqt = os.path.dirname(PyQt5.__file__)
 # os.environ['QT_PLUGIN_PATH'] = os.path.join(pyqt, "Qt/plugins")

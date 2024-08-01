@@ -92,7 +92,7 @@ color: rgb(255, 255, 255);</string>
     <item>
      <widget class="QLabel" name="image_label">
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(192, 191, 188);</string>
+       <string notr="true">background-image: url(:/newPrefix/bg.jpg);</string>
       </property>
       <property name="text">
        <string/>
@@ -131,6 +131,8 @@ color: rgb(255, 255, 255);</string>
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../assets/myassets.qrc"/>
+ </resources>
  <connections/>
 </ui>
