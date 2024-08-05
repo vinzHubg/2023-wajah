@@ -1,4 +1,4 @@
-name: /Users/haryandb/Projects/Pribadi/2023-wajah/.conda
+name: .conda
 channels:
   - anaconda
   - conda-forge
@@ -161,4 +161,4 @@ dependencies:
       - urllib3==2.2.2
       - webencodings==0.5.1
       - xhtml2pdf==0.2.16
-prefix: /Users/haryandb/Projects/Pribadi/2023-wajah/.conda
+prefix: ./.conda
