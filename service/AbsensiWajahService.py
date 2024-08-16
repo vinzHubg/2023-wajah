@@ -49,6 +49,30 @@ class AbsensiWajahService:
         elif absen.belum_absen_pulang():
             return self.absen_pulang()
         raise AbsensiWajahServiceException("Sudah melakukan absen masuk dan pulang")
+    
+    def hanya_absen_masuk(self, tanggal, id_karyawan):
+        self.tanggal = tanggal
+        self.id_karyawan = id_karyawan
+
+        absen = Absen(absen=self.repo.get_absen(id_karyawan, tanggal))
+        if absen.belum_absen_masuk():
+            return self.absen_masuk()
+        
+        raise AbsensiWajahServiceException("Sudah melakukan absen masuk")
+    
+    def hanya_absen_pulang(self, tanggal, id_karyawan):
+        self.tanggal = tanggal
+        self.id_karyawan = id_karyawan
+
+        absen = Absen(absen=self.repo.get_absen(id_karyawan, tanggal))
+        if absen.belum_absen_masuk():
+            raise AbsensiWajahServiceException("Belum melakukan absen masuk")
+
+        if absen.belum_absen_pulang():
+            return self.absen_pulang()
+
+        raise AbsensiWajahServiceException("Sudah melakukan absen pulang")
+
 
     """
     digunakan untuk mengeksekusi aktivitas absen masuk.

@@ -5,6 +5,7 @@ from ui.AbsensiWajah import AbsensiWajah
 from ui.DataJadwal import DataJadwal
 from ui.DataAbsensi import DataAbsensi 
 from ui.DataKaryawan import DataKaryawan
+from ui.absen_dialog import AbsenDialog
 
 class Home(QtWidgets.QMainWindow):
 
@@ -42,5 +43,5 @@ class Home(QtWidgets.QMainWindow):
         self.data_absensi.show()
 
     def absensiWajahButtonClick(self):
-        self.absensi_wajah = AbsensiWajah(self, context=self.context)
-        self.absensi_wajah.showFullScreen()
+        self.dialog = AbsenDialog(context=self.context)
+        self.dialog.show()
