@@ -88,34 +88,34 @@ class VideoThread(QThread):
                                 print("{:.2} #{}".format(
                                     face_distance, self.knownNames[i]))
 
-                        # matches = face_recognition.compare_faces(
-                        #     self.knownEncodings, encoding
-                        # )
-                        # name = "Unknown"
-                        # if True in matches:
-                        #     matchedIdxs = [
-                        #         i for (i, b) in enumerate(matches) if b]
-                        #     counts = {}
-                        #     for i in matchedIdxs:
-                        #         name = self.knownNames[i]
-                        #         counts[name] = counts.get(name, 0) + 1
-                        #     name = max(counts, key=counts.get)
-                        #     names.append(name)
+                        matches = face_recognition.compare_faces(
+                            self.knownEncodings, encoding
+                        )
+                        name = "Unknown"
+                        if True in matches:
+                            matchedIdxs = [
+                                i for (i, b) in enumerate(matches) if b]
+                            counts = {}
+                            for i in matchedIdxs:
+                                name = self.knownNames[i]
+                                counts[name] = counts.get(name, 0) + 1
+                            name = max(counts, key=counts.get)
+                            names.append(name)
 
+                        if (name != "Unknown"):
+                            karyawan = self.datasets[name]["data"]
 
-                        karyawan = self.datasets[name]["data"]
-
-                        if distance > THRESHOLD:
-                            cv2.putText(
-                                frame,
-                                "{} {:.2f}".format(karyawan[1], distance * 100),
-                                (x, y),
-                                cv2.FONT_HERSHEY_SIMPLEX,
-                                0.75,
-                                (0, 255, 0),
-                                2,
-                            )
-                            self.found_signal.emit(karyawan)
+                            if distance > THRESHOLD:
+                                cv2.putText(
+                                    frame,
+                                    "{} {:.2f}".format(karyawan[1], distance * 100),
+                                    (x, y),
+                                    cv2.FONT_HERSHEY_SIMPLEX,
+                                    0.75,
+                                    (0, 255, 0),
+                                    2,
+                                )
+                                self.found_signal.emit(karyawan)
                         else:
                             cv2.putText(
                                 frame,
