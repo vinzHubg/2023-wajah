@@ -18,6 +18,9 @@ from service.AbsensiWajahService import (
     AbsensiWajahService,
     AbsensiWajahServiceException,
 )
+
+
+
 from service.DatasetService import DatasetService
 from storage.FaceStorage import FaceStorage
 import datetime
@@ -42,9 +45,11 @@ class VideoThread(QThread):
 
     def run(self):
         self._run_flag = True
-        cap = cv2.VideoCapture(self.kamera_index)
+        print("buka camera")
+        cap = cv2.VideoCapture(self.kamera_index, cv2.CAP_DSHOW)
         cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
         cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        print("berhasil buka camera")
         while self._run_flag:
 
             ret, frame = cap.read()
@@ -281,6 +286,7 @@ class AbsensiWajah(QtWidgets.QMainWindow):
 
     def mulaiButtonClick(self):
         try:
+            print("mulaiButton {}".format(self.thread.isRun))
             if self.thread.isRun():
                 self.thread.stop()
             else:

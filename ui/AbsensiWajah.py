@@ -97,20 +97,19 @@ class VideoThread(QThread):
                         #     name = max(counts, key=counts.get)
                         #     names.append(name)
 
-
-                        karyawan = self.datasets[name]["data"]
-
-                        if distance > THRESHOLD:
-                            cv2.putText(
-                                frame,
-                                "{} {:.2f}".format(karyawan[1], distance * 100),
-                                (x, y),
-                                cv2.FONT_HERSHEY_SIMPLEX,
-                                0.75,
-                                (0, 255, 0),
-                                2,
-                            )
-                            self.found_signal.emit(karyawan)
+                        if name != "Unknown":
+                            karyawan = self.datasets[name]["data"]
+                            if distance > THRESHOLD:
+                                cv2.putText(
+                                    frame,
+                                    "{} {:.2f}".format(karyawan[1], distance * 100),
+                                    (x, y),
+                                    cv2.FONT_HERSHEY_SIMPLEX,
+                                    0.75,
+                                    (0, 255, 0),
+                                    2,
+                                )
+                                self.found_signal.emit(karyawan)
                         else:
                             cv2.putText(
                                 frame,

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>656</width>
+    <width>1018</width>
     <height>335</height>
    </rect>
   </property>
@@ -17,20 +17,30 @@
    <property name="geometry">
     <rect>
      <x>10</x>
-     <y>20</y>
+     <y>9</y>
      <width>241</width>
-     <height>20</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
   </widget>
   <widget class="QPushButton" name="cariButton">
    <property name="geometry">
     <rect>
      <x>260</x>
-     <y>20</y>
+     <y>12</y>
      <width>75</width>
-     <height>23</height>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Cari</string>
@@ -41,9 +51,14 @@
     <rect>
      <x>10</x>
      <y>290</y>
-     <width>75</width>
-     <height>23</height>
+     <width>81</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Tambah</string>
@@ -52,11 +67,16 @@
   <widget class="QPushButton" name="ubahButton">
    <property name="geometry">
     <rect>
-     <x>90</x>
+     <x>100</x>
      <y>290</y>
-     <width>75</width>
-     <height>23</height>
+     <width>91</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Edit</string>
@@ -65,11 +85,16 @@
   <widget class="QPushButton" name="hapusButton">
    <property name="geometry">
     <rect>
-     <x>170</x>
+     <x>200</x>
      <y>290</y>
-     <width>75</width>
-     <height>23</height>
+     <width>81</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Hapus</string>
@@ -80,9 +105,14 @@
     <rect>
      <x>570</x>
      <y>290</y>
-     <width>75</width>
-     <height>23</height>
+     <width>81</width>
+     <height>31</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Tutup</string>
@@ -93,9 +123,14 @@
     <rect>
      <x>10</x>
      <y>50</y>
-     <width>631</width>
+     <width>1001</width>
      <height>231</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>12</pointsize>
+    </font>
    </property>
    <property name="selectionMode">
     <enum>QAbstractItemView::SingleSelection</enum>

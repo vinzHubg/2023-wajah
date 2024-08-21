@@ -7,7 +7,7 @@ class Connection:
           host="localhost",
           user="root",
           passwd="",
-          database="absensi_wajah"
+          database="aplikasi_absensi"
         )
 
     def cursor(self):
